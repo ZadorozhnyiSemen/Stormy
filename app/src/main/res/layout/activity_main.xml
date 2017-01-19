@@ -14,7 +14,7 @@
     android:background="#FFFC970B">
 
     <TextView
-        android:text="100"
+        android:text="--"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -34,7 +34,7 @@
         android:layout_marginTop="50dp"/>
 
     <TextView
-        android:text="In 5:00 PM it will be"
+        android:text="..."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/temperatureLabel"
@@ -88,7 +88,7 @@
                 android:gravity="center_horizontal"/>
 
             <TextView
-                android:text="0.88"
+                android:text="--"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/humidityValue"
@@ -112,7 +112,7 @@
                 android:gravity="center_horizontal"/>
 
             <TextView
-                android:text="100%"
+                android:text="--"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/precipValue"
@@ -124,12 +124,12 @@
     </LinearLayout>
 
     <TextView
-        android:text="Storm with extra meatballs"
+        android:text="Getting current weather..."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView9"
+        android:id="@+id/summaryLabel"
         android:layout_marginTop="40dp"
         android:textColor="@android:color/background_light"
         android:textSize="18dp"
