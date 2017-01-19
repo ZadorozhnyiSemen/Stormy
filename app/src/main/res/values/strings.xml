@@ -3,4 +3,5 @@
     <string name="error_title">Ooops! Soryy!</string>
     <string name="error_message">There was an error. Please try again!</string>
     <string name="error_ok_button_text">OK</string>
+    <string name="network_anavailable_message">Network is unavailable!</string>
 </resources>
