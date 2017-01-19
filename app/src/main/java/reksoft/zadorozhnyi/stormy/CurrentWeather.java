@@ -1,6 +1,10 @@
 package reksoft.zadorozhnyi.stormy;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 public class CurrentWeather {
     private String mIcon;
     private long mTime;
@@ -8,6 +12,15 @@ public class CurrentWeather {
     private double mHumidity;
     private double mPrecipChance;
     private String mSummary;
+    private String mTimeZone;
+
+    public String getTimeZone() {
+        return mTimeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        mTimeZone = timeZone;
+    }
 
     public String getIcon() {
         return mIcon;
@@ -19,6 +32,14 @@ public class CurrentWeather {
 
     public long getTime() {
         return mTime;
+    }
+
+    public String getFormattedTime() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("h:mm a");
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(getTimeZone()));
+        Date date = new Date(getTime() * 1000);
+        String timeString = simpleDateFormat.format(date);
+        return timeString;
     }
 
     public void setTime(long time) {
