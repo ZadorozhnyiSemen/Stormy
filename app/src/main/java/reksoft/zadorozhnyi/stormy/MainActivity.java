@@ -7,7 +7,9 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +33,22 @@ public class MainActivity extends AppCompatActivity {
     private CurrentWeather mCurrentWeather;
 
 
-    @BindView(R.id.temperatureLabel) TextView mTemperatureLabel;
-    @BindView(R.id.timeLabel) TextView mTimeLabel;
-    @BindView(R.id.humidityValue) TextView mHumidityValue;
-    @BindView(R.id.precipValue) TextView mPrecipValue;
-    @BindView(R.id.summaryLabel) TextView mSummaryLabel;
-    @BindView(R.id.iconImageView) ImageView mIconImageView;
+    @BindView(R.id.temperatureLabel)
+    TextView mTemperatureLabel;
+    @BindView(R.id.timeLabel)
+    TextView mTimeLabel;
+    @BindView(R.id.humidityValue)
+    TextView mHumidityValue;
+    @BindView(R.id.precipValue)
+    TextView mPrecipValue;
+    @BindView(R.id.summaryLabel)
+    TextView mSummaryLabel;
+    @BindView(R.id.iconImageView)
+    ImageView mIconImageView;
+    @BindView(R.id.refreshImageView)
+    ImageView mRefreshImageView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +56,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mProgressBar.setVisibility(View.INVISIBLE);
 
+        final double latitude = 60.000573;
+        final double longitude = 30.334711;
+
+        mRefreshImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getForecast(latitude, longitude);
+            }
+        });
+
+        getForecast(latitude, longitude);
+        Log.d(TAG, "Main UI code is running");
+    }
+
+    private void getForecast(double latitude, double longitude) {
         String apiKey = "4047a59817eabe74153da1798525bdd3";
-        double latitude = 60.000573;
-        double longitude = 30.334711;
         String forecastUrl = "https://api.forecast.io/forecast/" + apiKey + "/"
                 + latitude + "," + longitude + "";
         if (isNetworkAvailable()) {
+            toggleRefresh();
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url(forecastUrl)
@@ -60,11 +87,23 @@ public class MainActivity extends AppCompatActivity {
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toggleRefresh();
+                        }
+                    });
+                    alertUserAboutError();
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            toggleRefresh();
+                        }
+                    });
                     try {
                         String jsonData = response.body().string();
                         if (response.isSuccessful()) {
@@ -88,7 +127,16 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, R.string.network_anavailable_message, Toast.LENGTH_LONG).show();
         }
-        Log.d(TAG, "Main UI code is running");
+    }
+
+    private void toggleRefresh() {
+        if (mProgressBar.getVisibility() == View.INVISIBLE) {
+            mProgressBar.setVisibility(View.VISIBLE);
+            mRefreshImageView.setVisibility(View.INVISIBLE);
+        } else {
+            mProgressBar.setVisibility(View.INVISIBLE);
+            mRefreshImageView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void updateDisplay() {
