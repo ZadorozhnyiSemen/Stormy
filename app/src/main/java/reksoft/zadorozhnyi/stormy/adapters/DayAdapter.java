@@ -47,7 +47,11 @@ public class DayAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.iconImageView = (ImageView) convertView.findViewById(R.id.iconImageView);
             holder.temperatureLabel = (TextView) convertView.findViewById(R.id.temperatureLabel);
-            holder.dayLabel = (TextView) convertView.findViewById(R.id.dayNameLabel);
+            if (position == 0) {
+                holder.dayLabel.setText("Today");
+            } else {
+                holder.dayLabel = (TextView) convertView.findViewById(R.id.dayNameLabel);
+            }
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

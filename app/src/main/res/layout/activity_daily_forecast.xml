@@ -13,6 +13,27 @@
     android:background="@drawable/bg_gradient">
 
     <TextView
+    android:text="This Week's Weather"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/thisWeekLabel"
+    android:textColor="#ffffffff"
+    android:textSize="25dp"
+    android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:text="St.Petersburg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/locationLabel"
+        android:textColor="#ffffffff"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
         android:text="@string/no_daily_forecast_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +46,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@android:id/list"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_above="@+id/locationLabel"
+        android:layout_below="@+id/thisWeekLabel"
+        android:divider="@null"
+        android:dividerHeight="0dp"/>
+
+
 </RelativeLayout>
