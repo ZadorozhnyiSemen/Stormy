@@ -1,10 +1,16 @@
 package reksoft.zadorozhnyi.stormy.ui;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +19,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.location.LocationServices;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,14 +45,14 @@ import reksoft.zadorozhnyi.stormy.weather.Day;
 import reksoft.zadorozhnyi.stormy.weather.Forecast;
 import reksoft.zadorozhnyi.stormy.weather.Hour;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     public static final String DAILY_FORECAST = "DAILY FORECAST";
     public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
-
+    private GoogleApiClient mGoogleApiClient;
+    private Location mMyLocation;
     private Forecast mForecast;
-
 
     @BindView(R.id.temperatureLabel)
     TextView mTemperatureLabel;
@@ -59,11 +70,32 @@ public class MainActivity extends AppCompatActivity {
     ImageView mRefreshImageView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+    private double mLatitude;
+    private double mLongitude;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(LocationServices.API)
+                .build();
+        Log.d(TAG, "Coordinats is : Latitude [" + mLatitude + "] and Longtitude [" + mLongitude + "]");
+
         ButterKnife.bind(this);
 
         mProgressBar.setVisibility(View.INVISIBLE);
@@ -250,17 +282,46 @@ public class MainActivity extends AppCompatActivity {
         dialogFragment.show(getFragmentManager(), "error_dialog");
     }
 
-    @OnClick (R.id.dailyButton)
+    @OnClick(R.id.dailyButton)
     public void startDailyActivity(View view) {
         Intent intent = new Intent(this, DailyForecastActivity.class);
         intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
         startActivity(intent);
     }
 
-    @OnClick (R.id.hourlyButton)
+    @OnClick(R.id.hourlyButton)
     public void startHourlyActivity(View view) {
         Intent intent = new Intent(this, HourlyForecastActivity.class);
         intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
         startActivity(intent);
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMyLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mMyLocation !=null) {
+            mLatitude = mMyLocation.getLatitude();
+            mLongitude = mMyLocation.getLongitude();
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
     }
 }
