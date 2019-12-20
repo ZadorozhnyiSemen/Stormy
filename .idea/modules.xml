@@ -4,6 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Stormy.iml" filepath="$PROJECT_DIR$/Stormy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_commonMain.iml" filepath="$PROJECT_DIR$/common/common_commonMain.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_commonTest.iml" filepath="$PROJECT_DIR$/common/common_commonTest.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosMain.iml" filepath="$PROJECT_DIR$/common/common_iosMain.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosTest.iml" filepath="$PROJECT_DIR$/common/common_iosTest.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_jvmMain.iml" filepath="$PROJECT_DIR$/common/common_jvmMain.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_jvmTest.iml" filepath="$PROJECT_DIR$/common/common_jvmTest.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_mobileMain.iml" filepath="$PROJECT_DIR$/common/common_mobileMain.iml" group="common" />
     </modules>
   </component>
 </project>

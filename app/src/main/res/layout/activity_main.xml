@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/cloudy_night"
-        android:id="@+id/iconImageView"
+        android:id="@+id/daily_icon"
         android:layout_alignBottom="@+id/locationLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -140,7 +140,7 @@
         app:srcCompat="@drawable/refresh"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/refreshImageView"/>
+        android:id="@+id/refresh"/>
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -149,7 +149,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/progressBar"
-        android:layout_alignBottom="@+id/refreshImageView"
+        android:layout_alignBottom="@+id/refresh"
         />
 
     <LinearLayout
