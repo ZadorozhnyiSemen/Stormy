@@ -24,6 +24,9 @@ object ClientApi {
     suspend fun loadForecast(lat: String? = latitude, long: String? = longitude): Forecast {
         latitude = lat ?: throw UnknownLatitudeException()
         longitude = long ?: throw UnknownLongitudeException()
-        return client.get(endpoint)
+        return client.get<Forecast>(endpoint).apply {
+            currently?.timezone = timezone
+            daily?.populateTimeZone()
+        }
     }
 }

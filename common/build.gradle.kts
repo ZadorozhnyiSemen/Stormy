@@ -48,6 +48,7 @@ kotlin {
             dependencies {
                 api("org.jetbrains.kotlin:kotlin-stdlib:1.3.61")
                 api("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61")
+                implementation("androidx.appcompat:appcompat:1.1.0")
 
                 api("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2-1.3.60")

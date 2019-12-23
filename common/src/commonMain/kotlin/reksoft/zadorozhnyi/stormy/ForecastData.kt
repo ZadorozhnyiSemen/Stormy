@@ -34,21 +34,35 @@ class Currently(
     val uvIndex: Double,
     val visibility: Double,
     val ozone: Double
-)
+) {
+    var timezone: String? = null
+}
 
 @Serializable
 class Hourly(
     val summary: String,
     val icon: String?,
     val data: List<Hour>
-)
+) {
+    var timezone: String? = null
+}
 
 @Serializable
 class Daily(
     val summary: String,
     val icon: String?,
     val data: List<Day>
-)
+) {
+    var timezone: String? = null
+
+    fun populateTimeZone() {
+        if (data.isNotEmpty()) {
+            data.forEach {
+                it.timezone = this.timezone
+            }
+        }
+    }
+}
 
 @Serializable
 class Hour(
@@ -115,4 +129,6 @@ class Day(
     val apparentTemperatureMinTime: Double?,
     val apparentTemperatureMax: Double?,
     val apparentTemperatureMaxTime: Double?
-)
+) {
+    var timezone: String? = null
+}
