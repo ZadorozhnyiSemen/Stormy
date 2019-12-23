@@ -3,12 +3,23 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Stormy.iml" filepath="$PROJECT_DIR$/Stormy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidApp/Stormy-androidApp.iml" filepath="$PROJECT_DIR$/androidApp/Stormy-androidApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StudioProjects-Stormy.iml" filepath="$PROJECT_DIR$/StudioProjects-Stormy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidApp/androidApp.iml" filepath="$PROJECT_DIR$/androidApp/androidApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidApp/androidApp_commonMain.iml" filepath="$PROJECT_DIR$/androidApp/androidApp_commonMain.iml" group="androidApp" />
+      <module fileurl="file://$PROJECT_DIR$/androidApp/androidApp_commonTest.iml" filepath="$PROJECT_DIR$/androidApp/androidApp_commonTest.iml" group="androidApp" />
+      <module fileurl="file://$PROJECT_DIR$/androidApp/app.iml" filepath="$PROJECT_DIR$/androidApp/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common_commonMain.iml" filepath="$PROJECT_DIR$/common/common_commonMain.iml" group="common" />
       <module fileurl="file://$PROJECT_DIR$/common/common_commonTest.iml" filepath="$PROJECT_DIR$/common/common_commonTest.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosArm32Main.iml" filepath="$PROJECT_DIR$/common/common_iosArm32Main.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosArm32Test.iml" filepath="$PROJECT_DIR$/common/common_iosArm32Test.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosArm64Main.iml" filepath="$PROJECT_DIR$/common/common_iosArm64Main.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosArm64Test.iml" filepath="$PROJECT_DIR$/common/common_iosArm64Test.iml" group="common" />
       <module fileurl="file://$PROJECT_DIR$/common/common_iosMain.iml" filepath="$PROJECT_DIR$/common/common_iosMain.iml" group="common" />
       <module fileurl="file://$PROJECT_DIR$/common/common_iosTest.iml" filepath="$PROJECT_DIR$/common/common_iosTest.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosX64Main.iml" filepath="$PROJECT_DIR$/common/common_iosX64Main.iml" group="common" />
+      <module fileurl="file://$PROJECT_DIR$/common/common_iosX64Test.iml" filepath="$PROJECT_DIR$/common/common_iosX64Test.iml" group="common" />
       <module fileurl="file://$PROJECT_DIR$/common/common_jvmMain.iml" filepath="$PROJECT_DIR$/common/common_jvmMain.iml" group="common" />
       <module fileurl="file://$PROJECT_DIR$/common/common_jvmTest.iml" filepath="$PROJECT_DIR$/common/common_jvmTest.iml" group="common" />
       <module fileurl="file://$PROJECT_DIR$/common/common_mobileMain.iml" filepath="$PROJECT_DIR$/common/common_mobileMain.iml" group="common" />
