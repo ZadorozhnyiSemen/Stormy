@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class Forecast(
+    var cityName: String? = null,
     val latitude: Double,
     val longitude: Double,
     val timezone: String,
@@ -11,7 +12,11 @@ class Forecast(
     val hourly: Hourly?,
     val daily: Daily?,
     val offset: Int
-)
+) {
+    override fun toString(): String {
+        return "$cityName $latitude $longitude"
+    }
+}
 
 @Serializable
 class Currently(
@@ -19,10 +24,13 @@ class Currently(
     val summary: String,
     val icon: String?,
     val precipIntensity: Double,
+    val precipIntensityError: Double? = null,
     val precipProbability: Double,
     val precipType: String? = null,
     val precipAccumulation: Double? = null,
-    val temperature: Double,
+    val nearestStormDistance: Int? = null,
+    val nearestStormBearing: Int? = null,
+    val temperature: Double? = null,
     val apparentTemperature: Double?,
     val dewPoint: Double?,
     val humidity: Double?,
@@ -45,6 +53,14 @@ class Hourly(
     val data: List<Hour>
 ) {
     var timezone: String? = null
+
+    fun populateTimeZone() {
+        if (data.isNotEmpty()) {
+            data.forEach {
+                it.timezone = this.timezone
+            }
+        }
+    }
 }
 
 @Serializable
@@ -73,7 +89,7 @@ class Hour(
     val precipProbability: Double,
     val precipType: String? = null,
     val precipAccumulation: Double? = null,
-    val temperature: Double,
+    val temperature: Double? = null,
     val apparentTemperature: Double?,
     val dewPoint: Double?,
     val humidity: Double?,
@@ -85,7 +101,9 @@ class Hour(
     val uvIndex: Double,
     val visibility: Double,
     val ozone: Double
-)
+) {
+    var timezone: String? = null
+}
 
 @Serializable
 class Day(
@@ -132,3 +150,6 @@ class Day(
 ) {
     var timezone: String? = null
 }
+
+@Serializable
+data class GeoData(val cityName: String, val lat: Double, val long: Double)

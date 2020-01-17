@@ -15,7 +15,7 @@ object ClientApi {
     lateinit var longitude: String
 
     val endpoint
-        get() = "$backendUrl/$apiKey/$latitude,$longitude?exclude=flags&units=auto"
+        get() = "$backendUrl/$apiKey/$latitude,$longitude?exclude=flags,minutely,alerts&units=auto"
 
     private val client = HttpClient {
         install(JsonFeature)
@@ -25,8 +25,12 @@ object ClientApi {
         latitude = lat ?: throw UnknownLatitudeException()
         longitude = long ?: throw UnknownLongitudeException()
         return client.get<Forecast>(endpoint).apply {
+            println(endpoint)
             currently?.timezone = timezone
+            daily?.timezone = timezone
+            hourly?.timezone = timezone
             daily?.populateTimeZone()
+            hourly?.populateTimeZone()
         }
     }
 }

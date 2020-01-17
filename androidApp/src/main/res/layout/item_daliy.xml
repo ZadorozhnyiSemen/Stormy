@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/day"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/raleway_medium"
+        android:textColor="@color/textPrimary"
+        android:textSize="12sp"
+        tools:text="Today" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/temperature"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/raleway_medium"
+        android:fontFeatureSettings="pnum, lnum"
+        android:textColor="@color/textPrimary"
+        android:textSize="12sp"
+        tools:text="10°" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/weather"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/raleway_medium"
+        android:textColor="@color/textPrimary"
+        android:textSize="12sp"
+        tools:text="Sunny" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/precip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/raleway_medium"
+        android:fontFeatureSettings="pnum, lnum"
+        android:textColor="@color/textPrimary"
+        android:textSize="12sp"
+        tools:text="0%" />
+
+</LinearLayout>

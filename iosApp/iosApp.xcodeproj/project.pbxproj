@@ -17,6 +17,7 @@
 		CE057D9323B0EEE3006D1642 /* iosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057D9223B0EEE3006D1642 /* iosAppUITests.swift */; };
 		CE057DA223B0EF3D006D1642 /* StormyAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE057DA123B0EF3D006D1642 /* StormyAPI.framework */; };
 		CE057DA323B0EF3D006D1642 /* StormyAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE057DA123B0EF3D006D1642 /* StormyAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CE057DA823B11BB6006D1642 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE057DA723B11BB6006D1642 /* Screen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		CE057D9223B0EEE3006D1642 /* iosAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppUITests.swift; sourceTree = "<group>"; };
 		CE057D9423B0EEE3006D1642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE057DA123B0EF3D006D1642 /* StormyAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StormyAPI.framework; path = "../common/build/fat-framework/StormyAPI.framework"; sourceTree = "<group>"; };
+		CE057DA723B11BB6006D1642 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		CE057D6F23B0EEE0006D1642 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE057DA623B11B90006D1642 /* utils */,
 				CE057D7023B0EEE0006D1642 /* AppDelegate.swift */,
 				CE057D7223B0EEE0006D1642 /* SceneDelegate.swift */,
 				CE057D7423B0EEE0006D1642 /* ViewController.swift */,
@@ -153,6 +156,14 @@
 				CE057DA123B0EF3D006D1642 /* StormyAPI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE057DA623B11B90006D1642 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE057DA723B11BB6006D1642 /* Screen.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE057D7523B0EEE0006D1642 /* ViewController.swift in Sources */,
+				CE057DA823B11BB6006D1642 /* Screen.swift in Sources */,
 				CE057D7123B0EEE0006D1642 /* AppDelegate.swift in Sources */,
 				CE057D7323B0EEE0006D1642 /* SceneDelegate.swift in Sources */,
 			);

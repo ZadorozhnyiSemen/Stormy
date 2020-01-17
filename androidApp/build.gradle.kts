@@ -10,11 +10,11 @@ android {
     buildToolsVersion = "28.0.3"
     defaultConfig {
         applicationId = "com.jetbrains.kotlinconf"
-        minSdkVersion(15)
+        minSdkVersion(21)
         targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
-
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         val release by getting {
@@ -40,9 +40,10 @@ kotlin {
 
                 implementation("androidx.appcompat:appcompat:1.1.0")
                 implementation("androidx.recyclerview:recyclerview:1.1.0")
-                implementation("com.squareup.okhttp3:okhttp:3.12.3")
-
+                implementation("androidx.viewpager2:viewpager2:1.0.0")
+                implementation("androidx.constraintlayout:constraintlayout:1.1.3")
                 implementation("com.google.android.material:material:1.0.0")
+                implementation("com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2")
                 implementation("androidx.multidex:multidex:2.0.0")
                 implementation("androidx.core:core-ktx:+")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2-1.3.60")
